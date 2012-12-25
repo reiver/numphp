@@ -3,11 +3,11 @@
 */
 
 
-#ifndef PHP_NUMPHP_H
-#define PHP_NUMPHP_H 1
+#ifndef PHP_NUM_H
+#define PHP_NUM_H 1
 
-#define PHP_NUMPHP_VERSION "1.0"
-#define PHP_NUMPHP_EXTNAME "numphp"
+#define PHP_NUM_VERSION "1.0"
+#define PHP_NUM_EXTNAME "num"
 
 #include "php.h"
 
@@ -33,7 +33,7 @@ PHP_FUNCTION(num_ivec4);
 
 
 
-extern zend_module_entry numphp_module_entry;
-#define phpext_numphp_ptr &numphp_module_entry
+extern zend_module_entry num_module_entry;
+#define phpext_num_ptr &num_module_entry
 
-#endif /* PHP_NUMPHP_H */
+#endif /* PHP_NUM_H */
