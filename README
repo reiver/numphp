@@ -1,4 +1,4 @@
-An efficient math library for PHP.
+NumPHP - An efficient math library for PHP.
 
 
 EXAMPLE
@@ -13,3 +13,10 @@ EXAMPLE
                    , 1.2, 2.2, 3.2
                    );
 
+
+INSTALLING
+
+	You will need to add the following to your php.ini file(s).
+
+
+		extension=num.so
