@@ -2,21 +2,21 @@
 
 rm -fR BUILD/
 mkdir BUILD
-cp src/config.m4      BUILD/
-cp src/config.w32     BUILD/
-cp src/numphp.h       BUILD/
-cp src/numphp.c       BUILD/
-cp src/numphp_types.h BUILD/
+cp src/config.m4   BUILD/
+cp src/config.w32  BUILD/
+cp src/num.h       BUILD/
+cp src/num.c       BUILD/
+cp src/num_types.h BUILD/
 cd BUILD
 phpize
-./configure --enable-numphp
+./configure --enable-num
 make
 echo '';
 echo '';
 echo '';
-echo '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=';
+echo '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=';
 echo '';
-echo 'The extension should be at: BUILD/modules/numphp.so';
+echo 'The extension should be at: BUILD/modules/num.so';
 echo '';
-echo '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=';
+echo '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=';
 echo '';
