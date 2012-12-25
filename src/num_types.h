@@ -4,21 +4,21 @@
 
 
 typedef struct _php_num_ivec2 {
-    int x;
-    int y;
+    long x;
+    long y;
 } php_num_ivec2;
 
 typedef struct _php_num_ivec3 {
-    int x;
-    int y;
-    int z;
+    long x;
+    long y;
+    long z;
 } php_num_ivec3;
 
 typedef struct _php_num_ivec4 {
-    int x;
-    int y;
-    int z;
-    int w;
+    long x;
+    long y;
+    long z;
+    long w;
 } php_num_ivec4;
 
 
