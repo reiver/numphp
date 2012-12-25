@@ -2,10 +2,11 @@
 
 rm -fR BUILD/
 mkdir BUILD
-cp src/config.m4  BUILD/
-cp src/config.w32 BUILD/
-cp src/numphp.h   BUILD/
-cp src/numphp.c   BUILD/
+cp src/config.m4      BUILD/
+cp src/config.w32     BUILD/
+cp src/numphp.h       BUILD/
+cp src/numphp.c       BUILD/
+cp src/numphp_types.h BUILD/
 cd BUILD
 phpize
 ./configure --enable-numphp
