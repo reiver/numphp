@@ -1,5 +1,5 @@
-#ifndef PHP_NUMPHP_TYPES_H
-#define PHP_NUMPHP_TYPES_H 1
+#ifndef PHP_NUM_TYPES_H
+#define PHP_NUM_TYPES_H 1
 
 
 
@@ -43,5 +43,5 @@ typedef struct _php_num_vec4 {
 
 
 
-#endif /* PHP_NUMPHP_TYPES_H */
+#endif /* PHP_NUM_TYPES_H */
 
