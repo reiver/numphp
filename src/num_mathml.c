@@ -25,7 +25,16 @@ PHP_FUNCTION(num_mathml_serialize)
 	switch (Z_TYPE_P(user_variable)) {
 
 		case IS_BOOL:
-			RETURN_NULL();
+			if        (   1 == Z_BVAL_P(user_variable)  ) {
+/////////////// RETURN
+				RETURN_STRING("<true />", 1);
+			} else if (  0 == Z_BVAL_P(user_variable)  ) {
+/////////////// RETURN
+				RETURN_STRING("<false />", 1);
+			} else {
+/////////////// RETURN
+				RETURN_NULL();
+			}
 		break;
 
 		case IS_NULL:
@@ -33,6 +42,46 @@ PHP_FUNCTION(num_mathml_serialize)
 		break;
 
 		case IS_LONG:
+		{
+			char *prefix  = "<cn>";
+			int   prefix_len;
+
+			char *postfix = "</cn>";
+			int   postfix_len;
+
+			char *mem_long;
+			int   mem_long_len;
+
+			char *mem;
+			int   mem_len;
+
+			prefix_len  = strlen(prefix);
+			postfix_len = strlen(postfix);
+
+			mem_long_len = snprintf(NULL, 0, "%ld", Z_LVAL_P(user_variable));
+			mem_long = emalloc(mem_long_len + 1);
+
+			//snprintf(mem_long, mem_long_len, "%ld", Z_LVAL_P(user_variable));
+			sprintf(mem_long, "%ld", Z_LVAL_P(user_variable));
+
+
+			mem_len = prefix_len + mem_long_len + postfix_len;
+
+			mem = emalloc(mem_len);
+
+			memcpy( mem                             , prefix   , prefix_len   );
+			memcpy( mem + prefix_len                , mem_long , mem_long_len );
+			memcpy( mem + prefix_len + mem_long_len , postfix  , postfix_len  );
+
+
+			efree(mem_long);
+
+
+/////////// RETURN
+			RETURN_STRINGL(mem, mem_len, 0);
+		}
+		break;
+
 		case IS_DOUBLE:
 		{
 			char *prefix  = "<cn>";
@@ -41,24 +90,32 @@ PHP_FUNCTION(num_mathml_serialize)
 			char *postfix = "</cn>";
 			int   postfix_len;
 
+			char *mem_double;
+			int   mem_double_len;
+
 			char *mem;
 			int   mem_len;
-
-
-			convert_to_string(user_variable);
-
 
 			prefix_len  = strlen(prefix);
 			postfix_len = strlen(postfix);
 
+			mem_double_len = snprintf(NULL, 0, "%f", Z_DVAL_P(user_variable));
+			mem_double = emalloc(mem_double_len + 1);
 
-			mem_len = prefix_len + Z_STRLEN_P(user_variable) + postfix_len;
+			//snprintf(mem_double, mem_double_len, "%f", Z_DVAL_P(user_variable));
+			sprintf(mem_double, "%f", Z_DVAL_P(user_variable));
+
+
+			mem_len = prefix_len + mem_double_len + postfix_len;
 
 			mem = emalloc(mem_len);
 
-			memcpy( mem                                          , prefix                    , prefix_len                );
-			memcpy( mem + prefix_len                             , Z_STRVAL_P(user_variable) , Z_STRLEN_P(user_variable) );
-			memcpy( mem + prefix_len + Z_STRLEN_P(user_variable) , postfix                   , postfix_len               );
+			memcpy( mem                               , prefix     , prefix_len   );
+			memcpy( mem + prefix_len                  , mem_double , mem_double_len );
+			memcpy( mem + prefix_len + mem_double_len , postfix    , postfix_len  );
+
+
+			efree(mem_double);
 
 
 /////////// RETURN
