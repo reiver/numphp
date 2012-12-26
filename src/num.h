@@ -23,6 +23,9 @@ PHP_FUNCTION(num_mathml_unserialize);
 //PHP_FUNCTION(num_array_serialize);
 //PHP_FUNCTION(num_array_unserialize);
 
+//PHP_FUNCTION(num_latex_serialize);
+//PHP_FUNCTION(num_latex_unserialize);
+
 PHP_FUNCTION(num_ivec2);
 PHP_FUNCTION(num_vec2);
 
