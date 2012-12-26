@@ -58,6 +58,10 @@ PHP_FUNCTION(num_ivec4);
 //
 //PHP_FUNCTION(num_mat4x4);
 //PHP_FUNCTION(num_imat4x4);
+//
+//
+//PHP_FUNCTION(num_array_out);
+//PHP_FUNCTION(num_array_in);
 
 
 
