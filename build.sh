@@ -10,6 +10,7 @@ cp src/num_types.h      BUILD/
 cp src/num_add.c        BUILD/
 cp src/num_dimension.c  BUILD/
 cp src/num_mathml.c     BUILD/
+cp src/num_types.c      BUILD/
 cd BUILD
 phpize
 ./configure --enable-num
