@@ -452,6 +452,73 @@ PHP_FUNCTION(num_mathml_serialize)
 
 				php_num_vec3 *vec3;
 
+				ZEND_FETCH_RESOURCE(vec3, php_num_vec3 *, &user_variable, -1, "num_vec3", le_num_vec3);
+
+
+
+				char *prefix  = "<vector><cn>";
+				int   prefix_len;
+
+				char *middle  = "</cn><cn>";
+				int   middle_len;
+
+				char *postfix = "</cn></vector>";
+				int   postfix_len;
+
+				char *x_mem;
+				int   x_mem_len;
+
+				char *y_mem;
+				int   y_mem_len;
+
+				char *z_mem;
+				int   z_mem_len;
+
+				char *mem;
+				int   mem_len;
+
+
+				prefix_len  = strlen(prefix);
+				middle_len  = strlen(middle);
+				postfix_len = strlen(postfix);
+
+				x_mem_len = snprintf(NULL, 0, "%f", vec3->x);
+				y_mem_len = snprintf(NULL, 0, "%f", vec3->y);
+				z_mem_len = snprintf(NULL, 0, "%f", vec3->z);
+
+				x_mem = emalloc(x_mem_len+1);
+				y_mem = emalloc(y_mem_len+1);
+				z_mem = emalloc(z_mem_len+1);
+
+				//snprintf(x_mem, x_mem_len, "%f", vec3->x);
+				//snprintf(y_mem, y_mem_len, "%f", vec3->y);
+				//snprintf(z_mem, z_mem_len, "%f", vec3->z);
+				sprintf(x_mem, "%f", vec3->x);
+				sprintf(y_mem, "%f", vec3->y);
+				sprintf(z_mem, "%f", vec3->z);
+
+
+				mem_len = prefix_len + x_mem_len + middle_len + y_mem_len + middle_len + z_mem_len + postfix_len;
+
+				mem = emalloc(mem_len);
+
+				memcpy( mem                                                                            , prefix  , prefix_len  );
+				memcpy( mem + prefix_len                                                               , x_mem   , x_mem_len   );
+				memcpy( mem + prefix_len + x_mem_len                                                   , middle  , middle_len  );
+				memcpy( mem + prefix_len + x_mem_len + middle_len                                      , y_mem   , y_mem_len   );
+				memcpy( mem + prefix_len + x_mem_len + middle_len + y_mem_len                          , middle  , middle_len  );
+				memcpy( mem + prefix_len + x_mem_len + middle_len + y_mem_len + middle_len             , z_mem   , z_mem_len   );
+				memcpy( mem + prefix_len + x_mem_len + middle_len + y_mem_len + middle_len + z_mem_len , postfix , postfix_len );
+
+
+				efree(x_mem);
+				efree(y_mem);
+				efree(z_mem);
+
+
+/////////////// RETURN
+				RETURN_STRINGL(mem, mem_len, 0);
+
 			} else if (  resource_type_id == le_num_vec4  ) {
 
 				php_num_vec4 *vec4;
