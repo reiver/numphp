@@ -74,7 +74,7 @@ PHP_FUNCTION(num_dimension)
 
 
 			long resource_id = Z_LVAL_P(x);
-			const char *resource_type_name = zend_rsrc_list_get_rsrc_type(resource_id TSRMLS_CC);
+			//const char *resource_type_name = zend_rsrc_list_get_rsrc_type(resource_id TSRMLS_CC);
 			int resource_type_id;
 
 			if (!zend_list_find(resource_id, &resource_type_id)) {
@@ -83,9 +83,9 @@ PHP_FUNCTION(num_dimension)
 			}
 
 			//DEBUG
-			php_printf("RESOURCE ID: %ld \n",       resource_id);
-			php_printf("RESOURCE TYPE NAME: %s \n", resource_type_name);
-			php_printf("RESOURCE TYPE ID: %d \n",   resource_type_id);
+			//php_printf("RESOURCE ID: %ld \n",       resource_id);
+			//php_printf("RESOURCE TYPE NAME: %s \n", resource_type_name);
+			//php_printf("RESOURCE TYPE ID: %d \n",   resource_type_id);
 
 
 			if        (  resource_type_id == le_num_ivec2  ) {
