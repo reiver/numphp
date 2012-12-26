@@ -64,6 +64,7 @@ PHP_FUNCTION(num_vec4);
 
 
 PHP_FUNCTION(num_add);
+PHP_FUNCTION(num_dimension);
 
 
 
