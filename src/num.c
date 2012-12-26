@@ -113,7 +113,7 @@ PHP_FUNCTION(num_mathml_out)
 			convert_to_string(user_variable);
 
 
-			prefix_len = strlen(prefix);
+			prefix_len  = strlen(prefix);
 			postfix_len = strlen(postfix);
 
 
@@ -143,7 +143,7 @@ PHP_FUNCTION(num_mathml_out)
 			int mem_len;
 
 
-			prefix_len = strlen(prefix);
+			prefix_len  = strlen(prefix);
 			postfix_len = strlen(postfix);
 
 
@@ -162,8 +162,85 @@ PHP_FUNCTION(num_mathml_out)
 
 		case IS_RESOURCE:
 		{
+			long resource_id = Z_LVAL_P(user_variable);
+			//const char *resource_type_name = zend_rsrc_list_get_rsrc_type(resource_id TSRMLS_CC);
+			int resource_type_id;
 
-//@TODO - #################################################3
+			if (!zend_list_find(resource_id, &resource_type_id)) {
+				RETURN_NULL();
+			}
+
+			php_printf("RESOURCE ID: %ld \n", resource_id);
+			//php_printf("RESOURCE TYPE NAME: %s \n", resource_type_name);
+			php_printf("RESOURCE TYPE ID: %d \n", resource_type_id);
+
+			if        (  resource_type_id == le_num_ivec2  ) {
+
+				php_num_ivec2 *ivec2;
+
+				ZEND_FETCH_RESOURCE(ivec2, php_num_ivec2 *, &user_variable, -1, "num_ivec2", le_num_ivec2);
+
+
+
+				char *prefix  = "<vector><cn>";
+				int prefix_len;
+
+				char *middle  = "</cn><cn>";
+				int middle_len;
+
+				char *postfix = "</cn></vector>";
+				int postfix_len;
+
+				char *mem;
+				int mem_len;
+
+
+				prefix_len  = strlen(prefix);
+				middle_len  = strlen(middle);
+				postfix_len = strlen(postfix);
+
+
+//				mem_len = prefix_len + Z_STRLEN_P(user_variable) + postfix_len;
+				mem_len = prefix_len + middle_len + postfix_len;
+
+				mem = emalloc(mem_len);
+
+				memcpy( mem                           , prefix  , prefix_len  );
+				memcpy( mem + prefix_len              , middle  , middle_len  );
+				memcpy( mem + prefix_len + middle_len , postfix , postfix_len );
+
+
+/////////////// RETURN
+				RETURN_STRINGL(mem, mem_len, 0);
+
+			} else if (  resource_type_id == le_num_ivec3  ) {
+
+				php_num_ivec3 *ivec3;
+
+			} else if (  resource_type_id == le_num_ivec4  ) {
+
+				php_num_ivec4 *ivec4;
+
+
+
+			} else if (  resource_type_id == le_num_vec2  ) {
+
+				php_num_vec2 *vec2;
+
+			} else if (  resource_type_id == le_num_vec3  ) {
+
+				php_num_vec3 *vec3;
+
+			} else if (  resource_type_id == le_num_vec4  ) {
+
+				php_num_vec4 *vec4;
+
+			} else {
+
+			}
+
+
+//@TODO - ##################################################
 			RETURN_NULL();
 		}
 		break;
