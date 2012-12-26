@@ -36,6 +36,8 @@ static function_entry num_functions[] = {
     PHP_FE(num_vec4                , NULL)
     PHP_FE(num_ivec4               , NULL)
 
+    PHP_FE(num_add                 , NULL)
+
     {NULL, NULL, NULL}
 };
 
@@ -823,81 +825,6 @@ PHP_FUNCTION(num_ivec4)
 	ZEND_REGISTER_RESOURCE(return_value, ivec4, le_num_ivec4);
 }
 
-
-
-
-
-
-
-
-
-
-PHP_FUNCTION(num_add)
-{
-	zval *a;
-	zval *b;
-
-	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "zz", &a, &b) == FAILURE) {
-		RETURN_NULL();
-	}
-
-
-	switch (Z_TYPE_P(a)) {
-
-		case IS_BOOL:
-			RETURN_NULL();
-		break;
-
-		case IS_NULL:
-			RETURN_NULL();
-		break;
-
-		case IS_LONG:
-			RETURN_NULL();
-		break;
-
-		case IS_DOUBLE:
-			RETURN_NULL();
-		break;
-
-		case IS_STRING:
-			RETURN_NULL();
-		break;
-
-		case IS_RESOURCE:
-		{
-			long resource_id = Z_LVAL_P(user_variable);
-			//const char *resource_type_name = zend_rsrc_list_get_rsrc_type(resource_id TSRMLS_CC);
-			int resource_type_id;
-
-			if (!zend_list_find(resource_id, &resource_type_id)) {
-/////////////// RETURN
-				RETURN_NULL();
-			}
-
-			//php_printf("RESOURCE ID: %ld \n", resource_id);
-			//php_printf("RESOURCE TYPE NAME: %s \n", resource_type_name);
-			//php_printf("RESOURCE TYPE ID: %d \n", resource_type_id);
-
-
-//@TODO ----------------------------------------------------------------------------------
-		}
-		break;
-
-		case IS_ARRAY:
-			RETURN_NULL();
-		break;
-
-		case IS_OBJECT:
-			RETURN_NULL();
-		break;
-
-		default:
-			RETURN_NULL();
-		break;
-
-	} // switch
-}
 
 
 
