@@ -17,8 +17,8 @@
 
 PHP_FUNCTION(num_test);
 
-PHP_FUNCTION(num_mathml_out);
-PHP_FUNCTION(num_mathml_in);
+PHP_FUNCTION(num_mathml_serialize);
+PHP_FUNCTION(num_mathml_unserialize);
 
 PHP_FUNCTION(num_vec2);
 PHP_FUNCTION(num_ivec2);
