@@ -3,17 +3,20 @@
 
 
 
+static int le_num_ivec2;
 typedef struct _php_num_ivec2 {
     long x;
     long y;
 } php_num_ivec2;
 
+static int le_num_ivec3;
 typedef struct _php_num_ivec3 {
     long x;
     long y;
     long z;
 } php_num_ivec3;
 
+static int le_num_ivec4;
 typedef struct _php_num_ivec4 {
     long x;
     long y;
@@ -23,17 +26,20 @@ typedef struct _php_num_ivec4 {
 
 
 
+static int le_num_vec2;
 typedef struct _php_num_vec2 {
     double x;
     double y;
 } php_num_vec2;
 
+static int le_num_vec3;
 typedef struct _php_num_vec3 {
     double x;
     double y;
     double z;
 } php_num_vec3;
 
+static int le_num_vec4;
 typedef struct _php_num_vec4 {
     double x;
     double y;
