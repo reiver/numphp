@@ -14,6 +14,52 @@
 
 
 
+static long _php_num_dimension_resource_id(long resource_id)
+{
+		long ERROR = -1;
+		long result = ERROR;
+
+		//const char *resource_type_name = zend_rsrc_list_get_rsrc_type(resource_id TSRMLS_CC);
+		int resource_type_id;
+
+		if (!zend_list_find(resource_id, &resource_type_id)) {
+/////////// RETURN
+			return ERROR;
+		}
+
+		//DEBUG
+		//php_printf("RESOURCE ID: %ld \n",       resource_id);
+		//php_printf("RESOURCE TYPE NAME: %s \n", resource_type_name);
+		//php_printf("RESOURCE TYPE ID: %d \n",   resource_type_id);
+
+
+		if        (  resource_type_id == le_num_ivec2  ) {
+			result = 2;
+		} else if (  resource_type_id == le_num_ivec3  ) {
+			result = 3;
+		} else if (  resource_type_id == le_num_ivec4  ) {
+			result = 4;
+
+		} else if (  resource_type_id == le_num_vec2  ) {
+			result = 2;
+		} else if (  resource_type_id == le_num_vec3  ) {
+			result = 3;
+		} else if (  resource_type_id == le_num_vec4  ) {
+			result = 4;
+
+		} else {
+/////////// RETURN
+			return ERROR;
+		}
+
+
+/////// RETURN
+		return result;
+}
+
+
+
+
 PHP_FUNCTION(num_dimension)
 {
 	zval *x;
@@ -72,50 +118,17 @@ PHP_FUNCTION(num_dimension)
 			php_printf("RESOURCE\n");
 
 
-
 			long resource_id = Z_LVAL_P(x);
-			//const char *resource_type_name = zend_rsrc_list_get_rsrc_type(resource_id TSRMLS_CC);
-			int resource_type_id;
 
-			if (!zend_list_find(resource_id, &resource_type_id)) {
+			long result = _php_num_dimension_resource_id(resource_id);
+
+			if (  -1 == result  ) {
 /////////////// RETURN
 				RETURN_NULL();
-			}
-
-			//DEBUG
-			//php_printf("RESOURCE ID: %ld \n",       resource_id);
-			//php_printf("RESOURCE TYPE NAME: %s \n", resource_type_name);
-			//php_printf("RESOURCE TYPE ID: %d \n",   resource_type_id);
-
-
-			if        (  resource_type_id == le_num_ivec2  ) {
-/////////////// RETURN
-				RETURN_LONG(2);
-			} else if (  resource_type_id == le_num_ivec3  ) {
-/////////////// RETURN
-				RETURN_LONG(3);
-			} else if (  resource_type_id == le_num_ivec4  ) {
-/////////////// RETURN
-				RETURN_LONG(4);
-
-
-			} else if (  resource_type_id == le_num_vec2  ) {
-/////////////// RETURN
-				RETURN_LONG(2);
-			} else if (  resource_type_id == le_num_vec3  ) {
-/////////////// RETURN
-				RETURN_LONG(3);
-			} else if (  resource_type_id == le_num_vec4  ) {
-/////////////// RETURN
-				RETURN_LONG(4);
-
 			} else {
 /////////////// RETURN
-				RETURN_NULL();
+				RETURN_LONG(result);
 			}
-
-
-//@TODO ----------------------------------------------------------------------------------
 		}
 		break;
 
