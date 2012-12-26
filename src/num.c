@@ -662,11 +662,11 @@ PHP_FUNCTION(num_vec2)
 
 
 
-    if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "dd", &x, &y)  ) {
-        RETURN_NULL();
-    }
+	if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "dd", &x, &y)  ) {
+		RETURN_NULL();
+	}
 
-    vec2 = emalloc( sizeof(php_num_vec2) );
+	vec2 = emalloc( sizeof(php_num_vec2) );
 
 	vec2->x = x;
 	vec2->y = y;
@@ -688,11 +688,11 @@ PHP_FUNCTION(num_ivec2)
 
 
 
-    if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "ll", &x, &y)  ) {
-        RETURN_NULL();
-    }
+	if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "ll", &x, &y)  ) {
+		RETURN_NULL();
+	}
 
-    ivec2 = emalloc( sizeof(php_num_ivec2) );
+	ivec2 = emalloc( sizeof(php_num_ivec2) );
 
 	ivec2->x = x;
 	ivec2->y = y;
@@ -715,11 +715,11 @@ PHP_FUNCTION(num_vec3)
 
 
 
-    if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "ddd", &x, &y, &z)  ) {
-        RETURN_NULL();
-    }
+	if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "ddd", &x, &y, &z)  ) {
+		RETURN_NULL();
+	}
 
-    vec3 = emalloc( sizeof(php_num_vec3) );
+	vec3 = emalloc( sizeof(php_num_vec3) );
 
 	vec3->x = x;
 	vec3->y = y;
@@ -743,11 +743,11 @@ PHP_FUNCTION(num_ivec3)
 
 
 
-    if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "lll", &x, &y, &z)  ) {
-        RETURN_NULL();
-    }
+	if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "lll", &x, &y, &z)  ) {
+		RETURN_NULL();
+	}
 
-    ivec3 = emalloc( sizeof(php_num_ivec3) );
+	ivec3 = emalloc( sizeof(php_num_ivec3) );
 
 	ivec3->x = x;
 	ivec3->y = y;
@@ -772,11 +772,11 @@ PHP_FUNCTION(num_vec4)
 
 
 
-    if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "dddd", &x, &y, &z, &w)  ) {
-        RETURN_NULL();
-    }
+	if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "dddd", &x, &y, &z, &w)  ) {
+		RETURN_NULL();
+	}
 
-    vec4 = emalloc( sizeof(php_num_vec4) );
+	vec4 = emalloc( sizeof(php_num_vec4) );
 
 	vec4->x = x;
 	vec4->y = y;
@@ -794,7 +794,6 @@ PHP_FUNCTION(num_vec4)
 
 PHP_FUNCTION(num_ivec4)
 {
-//#### TODO: These should be int's not double's
 	long x;
 	long y;
 	long z;
@@ -804,11 +803,11 @@ PHP_FUNCTION(num_ivec4)
 
 
 
-    if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "llll", &x, &y, &z, &w)  ) {
-        RETURN_NULL();
-    }
+	if (  FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "llll", &x, &y, &z, &w)  ) {
+		RETURN_NULL();
+	}
 
-    ivec4 = emalloc( sizeof(php_num_ivec4) );
+	ivec4 = emalloc( sizeof(php_num_ivec4) );
 
 	ivec4->x = x;
 	ivec4->y = y;
