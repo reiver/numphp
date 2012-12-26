@@ -14,6 +14,53 @@
 
 
 
+static void _php_num_add_ivec2(php_num_ivec2 *r, php_num_ivec2 *a, php_num_ivec2 *b)
+{
+	r->x = a->x + b->x;
+	r->y = a->y + b->y;
+}
+
+static void _php_num_add_ivec3(php_num_ivec3 *r, php_num_ivec3 *a, php_num_ivec3 *b)
+{
+	r->x = a->x + b->x;
+	r->y = a->y + b->y;
+	r->z = a->z + b->z;
+}
+
+static void _php_num_add_ivec4(php_num_ivec4 *r, php_num_ivec4 *a, php_num_ivec4 *b)
+{
+	r->x = a->x + b->x;
+	r->y = a->y + b->y;
+	r->z = a->z + b->z;
+	r->w = a->w + b->w;
+}
+
+
+static void _php_num_add_vec2(php_num_vec2 *r, php_num_vec2 *a, php_num_vec2 *b)
+{
+	r->x = a->x + b->x;
+	r->y = a->y + b->y;
+}
+
+static void _php_num_add_vec3(php_num_vec3 *r, php_num_vec3 *a, php_num_vec3 *b)
+{
+	r->x = a->x + b->x;
+	r->y = a->y + b->y;
+	r->z = a->z + b->z;
+}
+
+static void _php_num_add_vec4(php_num_vec4 *r, php_num_vec4 *a, php_num_vec4 *b)
+{
+	r->x = a->x + b->x;
+	r->y = a->y + b->y;
+	r->z = a->z + b->z;
+	r->w = a->w + b->w;
+}
+
+
+
+
+
 PHP_FUNCTION(num_add)
 {
 	zval *a;
