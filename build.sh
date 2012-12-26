@@ -7,6 +7,7 @@ cp src/config.w32  BUILD/
 cp src/num.h       BUILD/
 cp src/num.c       BUILD/
 cp src/num_types.h BUILD/
+cp src/num_add.c   BUILD/
 cd BUILD
 phpize
 ./configure --enable-num
