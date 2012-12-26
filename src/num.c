@@ -163,9 +163,6 @@ PHP_FUNCTION(num_mathml_out)
 		case IS_RESOURCE:
 		{
 
-			//DEBUG
-			php_printf("Resource type: %s \n", s);
-
 //@TODO - #################################################3
 			RETURN_NULL();
 		}
