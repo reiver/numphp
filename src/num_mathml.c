@@ -568,6 +568,8 @@ PHP_FUNCTION(num_mathml_serialize)
 	RETURN_NULL();
 }
 
+
+
 PHP_FUNCTION(num_mathml_unserialize)
 {
     char *mathml_str;
