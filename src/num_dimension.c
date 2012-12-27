@@ -14,7 +14,7 @@
 
 
 
-static long _php_num_dimension_resource_id(long resource_id)
+long _php_num_dimension_resource_id(long resource_id)
 {
 		long ERROR = -1;
 		long result = ERROR;
